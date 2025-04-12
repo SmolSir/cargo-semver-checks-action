@@ -1,0 +1,17 @@
+name: "PR Comment"
+on:
+  pull_request:
+
+jobs:
+  pr-comment:
+    name: Post a new comment
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout action repository
+        uses: actions/checkout@v4
+
+      - name: Run PR Comment action
+        uses: ./actions/pr-comment/
+        with:
+          github-token: ${{ secrets.GITHUB_TOKEN }}
+          cargo-semver-checks-output: 'Hello!'
